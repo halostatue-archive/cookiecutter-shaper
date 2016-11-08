@@ -1,0 +1,16 @@
+{
+  "project_name": "Project name for the Cookiecutter template",
+  "project_slug": "cookiecutter-{{ cookiecutter.project_name.lower().replace('cookiecutter', '').strip().replace(' ', '-') }}",
+  "github_username": "Your github username",
+  "full_name": "Your name",
+  "email": "Your email address (you@example.com)",
+  "version": "0.1.0",
+  "release_date": "{% now 'local' %}",
+  "project_short_description": "A short description of the project",
+  "copy_hooks": "yes",
+  "_extensions": [ "jinja2_time.TimeExtension" ],
+  "_copy_without_render": [
+    "cookiecutter.json",
+    "{{ cookiecutter.project_slug }}"
+  ]
+}
