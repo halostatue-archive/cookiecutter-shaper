@@ -7,7 +7,7 @@
 
 ## Requirements
 
-Install `cookiecutter` command line: `pip install cookiecutter`.
+Install the `cookiecutter` command line: `pip install cookiecutter`.
 
 ## Usage
 

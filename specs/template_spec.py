@@ -19,7 +19,6 @@ for module in modules:
 from support.runner import Runner
 from support.settings import SettingObject
 
-
 def check_template_variables(subject, vars):
     """
     check a given subject contains some template variables
@@ -76,14 +75,13 @@ with description('Cookiecutter Template'):
             self.settings.extra_context["version"] = expected
             self.runner.run()
             f = open(self.project_dir + '/VERSION', 'r')
+            expect(f.read()).to(contain_exactly(expected + "\n"))
 
-            expect(f.read()).to(contain_exactly(expected))
-
-        with it('fills the LICENSE file with the year, the full name and \
+        with it('fills the LICENSE.md file with the year, the full name and \
         the email address'):
             config = get_config(SettingObject.CONFIG_FILE)
             self.runner.run()
-            f = open(self.project_dir + '/LICENSE', 'r')
+            f = open(self.project_dir + '/LICENSE.md', 'r')
             actual = f.read()
 
             expect(actual).to(contain(config['default_context']['full_name']))
@@ -100,23 +98,16 @@ with description('Cookiecutter Template'):
             f = open(self.project_dir + '/README.md', 'r')
             actual = f.read()
 
-            expect(actual).to(contain(DEFAULT_PROJECT))
+            expect(actual).to(contain("# " + DEFAULT_PROJECT))
             expect(actual).to(contain(DEFAULT_PROJECT_DIR))
             expect(actual).to(contain(expected_description))
             expect(actual).to(
                 contain(config['default_context']['github_username'])
             )
 
-        with it('formats correctly the project title in the README.md file'):
-            expected = ''.center(len(DEFAULT_PROJECT), '=')
-            self.runner.run()
-            f = open(self.project_dir + '/README.md', 'r')
-
-            expect(f.read()).to(match(r"^" + re.escape(expected) + r"$", re.M))
-
     with context('existing files and directories'):
-        with it('creates a CHANGELOG.md file'):
-            expected = self.project_dir + "/CHANGELOG.md"
+        with it('creates a History.md file'):
+            expected = self.project_dir + "/History.md"
             self.runner.run()
 
             expect(os.path.exists(expected)).to(be_true)
