@@ -1,3 +1,7 @@
+## 1.1 / 2016-12-06
+
+*   Changed ‘copy_hooks’ parameter to a yes/no menu.
+
 ## 1.0.1 / 2016-11-29
 
 *   Renamed the target `VERSION.md` to `VERSION`.

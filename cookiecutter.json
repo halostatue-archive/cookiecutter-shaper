@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "release_date": "{% now 'local' %}",
   "project_short_description": "A short description of the project",
-  "copy_hooks": "yes",
+  "copy_hooks": [ "yes", "no" ],
   "_extensions": [ "jinja2_time.TimeExtension" ],
   "_copy_without_render": [
     "cookiecutter.json",
